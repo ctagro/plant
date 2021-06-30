@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Defensivos</title>
+    <title>Praga / Doença</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -45,7 +45,7 @@
 </div>   
 
    
-<form action="{{ route('pesticide.destroy',[ 'pesticide' => $pesticide->id ])}}" method="POST"  enctype="multipart/form-data">
+<form action="{{ route('disease.destroy',[ 'disease' => $disease->id ])}}" method="POST"  enctype="multipart/form-data">
 
     @method('DELETE')
   
@@ -57,50 +57,62 @@
       <div class="container">
 
             <div class="row">
-              <div class="bolder">Nome:</div>
+              <div class="bolder">Nome vulgar:</div>
+            </div>
+              <div class="form-control">{{ $disease->name_vulgar}}</div>
             </div>
             <div class="row">
-              <div class="form-control">{{ $pesticide->name}}</div>
-            </div>
-            <div class="row">
-              <div class="form-group col-sm-4 ">
+              <div class="form-group col-sm-6 ">
                 <div class="row">
-                  <div class="bolder">Embalagem:</div>
+                  <div class="bolder">Nome científico:</div>
                 </div>
                 <div class="row">
-                  <div class="form-control">{{ $pesticide->packing}}</div>
+                  <div class="form-control">{{ $disease->name_scientific}}</div>
                 </div> 
                 <div class="row">
-                  <div class="bolder">Unidade:</div>        
+                  <div class="bolder">Descrição:</div>        
                 </div>
                 <div class="row">  
-                  <div class="form-control">{{ $pesticide->unity}}</div>
+                  <div class="form-control" readonly>{{ $disease->description}}</div>
                 </div> 
                 <div class="row">
-                  <div class="bolder">Preço:</div>
+                  <div class="bolder">Sintomas::</div>
                 </div>       
                 <div class="row">
-                  <div class="form-control">{{number_format($pesticide->price, 2 , ',', '.') }}</div>
+                  <div class="form-control" readonly>{{$disease->symptoms}}</div>
                 </div>
                 <div class="row">
-                  <div class="bolder">Preço por unidade:</div>
+                  <div class="bolder" >Defencivos indicados:</div>
                 </div>
                 <div class="row">
-                  <div class="form-control">{{number_format($pesticide->price_unit, 2 , ',', '.') }}</div>
+                  <div class="form-control" readonly>{{$disease->indicated_pesticide}}</div>
+                </div> 
+                <div class="row">
+                  <div class="bolder">Controles:</div>
+                </div>
+                <div class="row">
+                  <div class="form-control" readonly>{{$disease->control}}</div>
+                </div>
+                <div class="row">
+                  <div class="bolder">Observação:</div>
+                </div>
+                <div class="row">
+                  <textarea class="form-control" readonly>{{ $disease->note}}</textarea>
                 </div> 
               </div>
-              <div class="form-group col-sm-2 ">          
+    
+              <div class="form-group col-sm-2">          
                 <p></p>          
               </div>
-              <div class="form-group col-sm-6 ">
+              <div class="form-group col-sm-4 ">
                 <br>          
-                <img src="{{ asset('storage/pesticides/'.$pesticide->image)}}" class="img-thumbnail elevation-2"  style="max-width: 300px;">         
+                <img src="{{ asset('storage/diseases/'.$disease->image)}}" class="img-thumbnail elevation-2"  alt='Imagem da praga / doença' style="max-width: 300px;">         
               </div>
             </div>
       </div>
             <div class="form-group">
               <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão do funcionário</button>
-              <a href="{{ url('/pesticide') }}" class="float-right" >Voltar </a> 
+              <a href="{{ url('/disease') }}" class="float-right" >Voltar </a> 
             </div>
           </div>
       </form>

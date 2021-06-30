@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Área de Plantio</title>
+    <title>Doença/praga</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -38,9 +38,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/active_principle_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
-                  Cadastrar
-                  <a class="float-right" href="{{url('/active_principle')}}">Lista</a>
+                  <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/disease_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                  Cadastrar de defensivos
+                  <a class="float-right" href="{{url('/disease')}}">Lista</a>
                 </div>
             </div>
         </div>
@@ -71,10 +71,10 @@
     <!-- porque nao suporta o metodo POST se store é post-->
     <div class="row justify-content-center">
         <div class="col-12">
-                <form action="{{ route('active_principle.store') }}" method="POST" enctype="multipart/form-data" class="col-12">
+                <form action="{{ route('disease.store') }}" method="POST" enctype="multipart/form-data" class="col-12">
 
                     @method('POST')
-                    @include('active_principle/active_principle.form')
+                    @include('pesticide/disease.form')
 
                 </form>
                        

@@ -4,26 +4,27 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCropsTable extends Migration
+class CreateActivePrinciplesTable extends Migration
 {
     /**
      * Run the migrations.
+     *  'user_id',
+
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('crops', function (Blueprint $table) {
+        Schema::create('active_principles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->text('name',50); // nome da variedade
+            $table->text('name',200);
+            $table->unsignedBigInteger('category_pesticide_id')->nullable();
             $table->text('description',200);
-            $table->text('packing',50); // tipo de embalagem// 
-            $table->text('unity',10);
-            $table->enum('in_use',['S','N'])->default("S");
-            $table->string('image', 100)->nullable();
+            $table->text('main_uses',200);
             $table->longtext('note');
+            $table->longtext('in_use');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -36,6 +37,6 @@ class CreateCropsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('crops');
+        Schema::dropIfExists('active_principles');
     }
 }

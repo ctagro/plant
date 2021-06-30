@@ -1,6 +1,7 @@
 <?php
 
 return [
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -223,6 +224,10 @@ return [
     |
     */
 
+    
+
+
+
     'menu' => [
         [
             'text' => 'search',
@@ -248,6 +253,34 @@ return [
             'url'  => 'site/profile/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
+
+        [
+            'text'       => 'Informações financeiras',
+            'icon_color' => 'yellow',
+            'url'  => 'admin/home/finance_menu',
+            'icon' => 'fas fa-money-bill-wave',
+        ],
+
+        [
+            'text'       => 'Cadastro de atividades',
+            'icon_color' => 'yellow',
+            'url'  => 'admin/home/activity_menu',
+            'icon' => 'fas fa-money-bill-wave',
+        ],
+
+        [
+            'text'       => 'Aplicação de produtos',
+            'icon_color' => 'yellow',
+            'url'  => 'admin/home/application_menu',
+            'icon' => 'fas fa-money-bill-wave',
+        ],
+
+        [
+            'text'       => 'Configurações',
+            'icon_color' => 'yellow',
+            'url'  => 'admin/home/settings_menu',
+            'icon' => 'fas fa-money-bill-wave',
+        ],
         
     /*    [
             'text'        => 'Galeria de fotos',
@@ -257,56 +290,8 @@ return [
          //   'label_color' => 'success',
         ],
       */  
-        ['header' => '=========================='],
-
-
-
-            [
-                'text'    => 'Financeiro',
-                'icon'    => 'fas fa-fw fa-share',
-                'submenu' => [
-
-
-                [
-                    'text'       => 'Registrar despesas',
-                    'icon_color' => 'cyan',
-                    'url'        => '/account',
-                    'icon'        => 'fas fa-calendar-minus',
-
-                ],
-
-                [
-                    'text'       => 'Registrar vendas',
-                    'icon_color' => 'cyan',
-                    'url'        => '/sale',
-                    'icon'        => 'fas fa-calendar-minus',
-
-                ],
-
-                [
-                    'text'       => 'Pesquisar Movimentações',
-                    'icon_color' => 'green',
-                    'url'  => '/account_research',
-                    'icon'        => 'fas fa-money-bill-wave',
-                ],
-
-                [
-                    'text'       => 'Pesquisar Vendas',
-                    'icon_color' => 'cyan',
-                    'url'        => '/sale_research',
-                    'icon'        => 'fas fa-chart-line', 
-                ],
-
-                [
-                    'text'       => 'Fluxo de caixa',
-                    'icon_color' => 'cyan',
-                    'url'        => '/cash_flow',
-                    'icon'        => 'fas fa-chart-line', 
-                ],
-
-            ],
-        ],
-
+ 
+      /*
 
         ['header' => '=========================='],
 
@@ -369,7 +354,7 @@ return [
         'icon'        => 'fas fa-calendar-plus', 
 
     ],
-
+ 
 
     ['header' => '=========================='],
 
@@ -428,14 +413,45 @@ return [
             ],
 
             [
+                'text'       => 'Principio ativo',
+                'icon_color' => 'green',
+                'url'        => '/active_principle',
+                'icon'       => 'fas fa-money-bill-wave',
+            ],
+
+            [
+                'text'       => 'Pragas / Doenças',
+                'icon_color' => 'green',
+                'url'        => '/disease',
+                'icon'       => 'fas fa-money-bill-wave',
+            ],
+
+            [
+                'text'       => 'Categoria de defensivo',
+                'icon_color' => 'green',
+                'url'        => '/category_pesticide',
+                'icon'       => 'fas fa-money-bill-wave',
+            ],
+
+            
+
+            [
                 'text'       => 'Compradores',
                 'icon_color' => 'green',
-                'url'  => '/bayer',
-                'icon'        => 'fas fa-money-bill-wave',
+                'url'        => '/bayer',
+                'icon'       => 'fas fa-money-bill-wave',
             ],
-        ],
-    ],  
 
+      /* esta apresntando erro na gravaçao -----  
+          [
+                'text'       => 'Usuário',
+                'icon_color' => 'green',
+                'url'        => '/user',
+                'icon'       => 'fas fa-money-bill-wave',
+            ],
+            */
+        
+   
         
     ],
 

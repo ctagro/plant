@@ -7,24 +7,15 @@ use Carbon\Carbon;
 use DateTime;
 use DB;
 use App\User;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Crop extends Model
+class Category_pesticide extends Model
 {
-    use SoftDeletes;
-    
     protected $fillable = [
         'user_id',
-        'crop_name',
         'name',
         'description',
-        'packing',
-        'unity', 
-        'in_use' ,   
-        'image',
-        'note',
-    
-];
+        'in_use' ,
+    ];
 
    /*********************************
      * Formatando a data como dia mes e ano
@@ -36,32 +27,28 @@ class Crop extends Model
          return Carbon::parse($value)->format('d/m/Y');
      }
 
-public function storeCrop(array $data): Array
+public function storeCategory_pesticide(array $data): Array
     {  
        //dd($data);
 
-            $crop = auth()->user()->crop()->create([
+            $category_pesticide = auth()->user()->category_pesticide()->create([
 
-                'crop_name'     => $data['crop_name'],
                 'name'          => $data['name'],
-                'description'   => $data['description'], 
-                'packing'       => $data['packing'],
-                'unity'         => $data['unity'],
+                'description'   => $data['description'],
                 'in_use'        => $data['in_use'],
-                'image'         => $data['image'],
-                'note'          => $data['note'],
                 
-             ]);
+
+         ]);
 
         
  
-       if($crop){
+       if($category_pesticide){
 
             DB::commit();
 
             return[
                 'sucess' => true,
-                'mensage'=> 'Cultura registrada com sucesso'
+                'mensage'=> 'Funcionário registrada com sucesso'
             ];
 
             }
@@ -72,13 +59,11 @@ public function storeCrop(array $data): Array
 
             return[
                     'sucess' => false,
-                    'mensage'=> 'Falha ao registrar a Cultura'
+                    'mensage'=> 'Falha ao registrar a funcionário'
             ];
             }
 
     }
-
-
 
     public function user()
     {

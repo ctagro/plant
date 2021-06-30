@@ -18,6 +18,20 @@ Route::get('/', function() {
 });
 
 Route::get('admin/home/index', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin.home.index')-> middleware('auth');
+Route::get('admin/home/finance_menu', [App\Http\Controllers\Admin\UserController::class, 'finance_menu'])->name('home.finance_menu')-> middleware('auth');
+Route::get('admin/home/activity_menu', [App\Http\Controllers\Admin\UserController::class, 'activity_menu'])->name('home.activity_menu')-> middleware('auth');
+Route::get('admin/home/application_menu', [App\Http\Controllers\Admin\UserController::class, 'application_menu'])->name('home.application_menu')-> middleware('auth');
+Route::get('admin/home/settings_menu', [App\Http\Controllers\Admin\UserController::class, 'settings_menu'])->name('home.settings_menu')-> middleware('auth');
+
+Route::namespace('admin')->group(function () {
+    Route::get('user/create', 'UserController@create')->name('user.create');
+    Route::post('user/store', 'UserController@store')->name('user.store');
+    Route::get('user', 'UserController@list')->name('user.index')-> middleware('auth');
+    Route::post('user/{user}', 'UserController@show')->name('user.show');
+    Route::get('user/{user}/edit', 'UserController@edit')->name('user.edit');
+    Route::patch('user/{user}', 'UserController@update')->name('user.update');
+    Route::delete('user/{user}', 'UserController@destroy')->name('user.destroy');
+});
 
 Route::get('/home', function() {
     return view('home');
@@ -150,6 +164,16 @@ Route::namespace('Product')->group(function () {
 });
 
 Route::namespace('Pesticide')->group(function () {
+
+    Route::get('disease/create', 'DiseaseController@create')->name('disease.create');
+    Route::post('disease/store', 'DiseaseController@store')->name('disease.store');
+    Route::get('disease', 'DiseaseController@index')->name('disease.index')-> middleware('auth');
+    Route::post('disease/{disease}', 'DiseaseController@show')->name('disease.show');
+    Route::get('disease/{disease}/edit', 'DiseaseController@edit')->name('disease.edit');
+    Route::patch('disease/{disease}', 'DiseaseController@update')->name('disease.update');
+    Route::delete('disease/{disease}', 'DiseaseController@destroy')->name('disease.destroy');
+
+
     Route::get('pesticide/create', 'PesticideController@create')->name('pesticide.create');
     Route::post('pesticide/store', 'PesticideController@store')->name('pesticide.store');
     Route::get('pesticide', 'PesticideController@index')->name('pesticide.index')-> middleware('auth');
@@ -170,7 +194,24 @@ Route::namespace('Pesticide')->group(function () {
     Route::get('pesticide_apply/pesticide_apply_research', 'Pesticide_applyResearchController@consult')->name('pesticide.pesticide_apply_research.consult');
     Route::get('pesticide_apply/pesticide_apply_research/index', 'Pesticide_applyResearchController@index')->name('pesticide.pesticide_apply_research.index');
 
-    
+    Route::get('active_principle/create', 'Active_principleController@create')->name('active_principle.create');
+    Route::post('active_principle/store', 'Active_principleController@store')->name('active_principle.store');
+    Route::get('active_principle', 'Active_principleController@index')->name('active_principle.index')-> middleware('auth');
+    Route::post('active_principle/{active_principle}', 'Active_principleController@show')->name('active_principle.show');
+    Route::get('active_principle/{active_principle}/edit', 'Active_principleController@edit')->name('active_principle.edit');
+    Route::patch('active_principle/{active_principle}', 'Active_principleController@update')->name('active_principle.update');
+    Route::delete('active_principle/{active_principle}', 'Active_principleController@destroy')->name('active_principle.destroy');
+
+    Route::get('category_pesticide/create', 'Category_pesticideController@create')->name('category_pesticide.create');
+    Route::post('category_pesticide/store', 'Category_pesticideController@store')->name('category_pesticide.store');
+    Route::get('category_pesticide', 'Category_pesticideController@index')->name('category_pesticide.index')-> middleware('auth');
+    Route::post('category_pesticide/{category_pesticide}', 'Category_pesticideController@show')->name('category_pesticide.show');
+    Route::get('category_pesticide/{category_pesticide}/edit', 'Category_pesticideController@edit')->name('category_pesticide.edit');
+    Route::patch('category_pesticide/{category_pesticide}', 'Category_pesticideController@update')->name('category_pesticide.update');
+    Route::delete('category_pesticide/{category_pesticide}', 'Category_pesticideController@destroy')->name('category_pesticide.destroy');
+
+
+   
 });
 
 Route::namespace('Report')->group(function () {

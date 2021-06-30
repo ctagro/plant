@@ -30,7 +30,7 @@ class Pesticide_apply extends Model
         'accounting_id'         ,
         'ground_id'             ,
         'amount'                ,
-        'note'                  ,
+        'note'           ,
 
     ];
 

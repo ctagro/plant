@@ -18,6 +18,9 @@ use App\Models\Bayer;
 use App\Models\Sale;
 use App\Models\Pesticide;
 use App\Models\Pesticide_apply;
+use App\Models\Active_principle;
+use App\Models\Disease;
+use App\Models\Category_pesticide;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -53,6 +56,46 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function storeUser(array $data): Array
+    {  
+      // dd($data);
+
+            $user = new User;
+
+            dd($user->id);
+
+       //     $user->name              = $data->name;
+         //   $user->email             = $data->email;
+           // $user->password          = $data->password; 
+        //    $user->image             = $data->image;
+        //    $user->competence_id     = $data->competence_id;
+                
+         //   $user->save();
+
+        
+ 
+       if($user){
+
+            DB::commit();
+
+            return[
+                'sucess' => true,
+                'mensage'=> 'Usuário registrada com sucesso'
+            ];
+
+            }
+
+       else {
+
+            DB::rollback();
+
+            return[
+                    'sucess' => false,
+                    'mensage'=> 'Falha ao registrar a Cultura'
+            ];
+        }
+    }
 
     public function type_activity()
     {
@@ -118,6 +161,21 @@ class User extends Authenticatable
     public function pesticide_apply()
     {
         return $this->hasMany(pesticide_apply::class);
+    }
+
+    public function active_principle()
+    {
+        return $this->hasMany(active_principle::class);
+    }
+    
+    public function disease()
+    {
+        return $this->hasMany(disease::class);
+    }
+
+    public function category_pesticide()
+    {
+        return $this->hasMany(category_pesticide::class);
     }
 
 }

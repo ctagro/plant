@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tipo de Conta</title>
+    <title>Cultura</title>
      <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,18 +25,19 @@
 </body>
 </html>
 
-@section('title', 'Confirmar exclusão')
+@section('title', 'Apresentar')
 
     @extends('adminlte::page')
 
 @section('content')
+
    
 <div class="container">
   <div class="row justify-content-center">
       <div class="col-md-12">
           <div class="card">
               <div class="card-header">
-                <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/crop_plant.jpeg')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
+                <img class="card-img-top img-responsive img-thumbnail" src="{{ asset('img/cards/category_pesticide_plant.png')}}"  style="height: 50px; width: 50px;"alt="Imagem" >
                 Confirmar exclusão
               </div>
           </div>
@@ -45,7 +46,7 @@
 </div>   
 
    <!-- Fim do Formulario de despesa_conta --> 
-   <form action="{{ route('crop.destroy',[ 'crop' => $crop->id ])}}" method="POST"  enctype="multipart/form-data">
+   <form action="{{ route('category_pesticide.destroy',[ 'category_pesticide' => $category_pesticide->id ])}}" method="POST"  enctype="multipart/form-data">
 
     @method('DELETE')
   
@@ -57,34 +58,31 @@
 
     <div class="container">
 
-      <div class="row">
-        <div class="bolder">Cultura:</div>
-      </div> 
-      <div class="row">
-        <div class="form-control">{{ $crop->crop_name}}</div>
-      </div>
-      <div class="row">
-          <div class="bolder">Variedade:</div>
+        <div class="row">
+          <div class="bolder">Nome:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $crop->name}}</div>
+          <div class="form-control">{{ $category_pesticide->name}}</div>
         </div>
         <div class="row">
           <div class="bolder">Descrição:</div>
         </div>
         <div class="row">
-          <div class="form-control">{{ $crop->description}}</div>
+          <div class="form-control">{{ $category_pesticide->description}}</div>
         </div>      
         <br>
         <div class="row">
-          Imagem :
-          <img src="{{ asset('storage/crops/'.$crop->image)}}" class="img-thumbnail elevation-2"  style="max-width: 50px;"> 
+          <div class="bolder">Ct Vendas:</div>
         </div>
+        <div class="row">
+          <div class="form-control">{{ $category_pesticide->sale}}</div>
+        </div>      
+        
     </div>
       
              <div class="form-group">
-                  <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão da Cultura</button>
-                  <a href="{{ url('/crop') }}" class="float-right" >Voltar </a> 
+                  <button type="submit" class="btn btn-outline-danger" >Confirma a exclusão do funcionário</button>
+                  <a href="{{ url('/category_pesticide') }}" class="float-right" >Voltar </a> 
              </div>
          </div>
      </form>

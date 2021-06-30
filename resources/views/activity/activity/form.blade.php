@@ -177,7 +177,7 @@
 
                 <label for="note">Observações</label>    
                     <input type="longtext" name="note" value="{{old('note') ?? $activity->note }}" rows="4" class="form-control">                            
-                </div>
+            </div>
 
             @csrf
                 <div class="card">
